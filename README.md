@@ -4,6 +4,10 @@ Open_Sora模型数据集计划
 
 # 项目结构
 
+### 数据管理中心（软件）
+
+文件目录：root/manager
+
 ### 数学几何场景
 
 文件目录：root/manim/
@@ -40,6 +44,12 @@ Open_Sora模型数据集计划
 | --------- | ---- | --------- | --------- | --------- |
 | Open-Sora |      |           |           |           |
 |           |      |           |           |           |
+
+# 环境
+
+Python3.11
+
+`pip install -r requirements.txt`
 
 # 声明
 
