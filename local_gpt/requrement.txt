@@ -11,3 +11,4 @@ rq
 transformers
 accelerate
 llama-cpp-python
+openai
