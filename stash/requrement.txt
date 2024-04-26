@@ -1,0 +1,9 @@
+fastapi
+uvicorn[standard]
+sqlmodel
+psutil
+python-ulid
+requests
+python-multipart
+rich
+rq

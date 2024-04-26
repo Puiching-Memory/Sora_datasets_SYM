@@ -1,15 +1,14 @@
 import manim
 
-class Circle(manim.Circle):
-    def __init__(self, **kwargs):
-        super().__init__(**kwargs)
-        self.set_stroke(manim.colors.BLUE)
-
-def main():
-    scene = manim.Scene()
-    circle = Circle(radius=1, center=(0, 0))
-    scene.add(circle)
-    scene.render()
+class Example(manim.Scene):
+    def construct(self):
+        circle = manim.Circle(
+            center=[0, 0],
+            radius=1,
+            stroke_width=2
+        )
+        self.add(circle)
 
 if __name__ == "__main__":
-    main()
+    m = Example()
+    m.render()

@@ -18,6 +18,10 @@ llama.cpp-python
 pip install llama-cpp-python[server] --extra-index-url https://abetlen.github.io/llama-cpp-python/whl/cu122
 ```
 
+使用llama3-8b
+
+评估效果不佳，无法通过最简单的测试
+
 # 网络
 
 端口：5101
