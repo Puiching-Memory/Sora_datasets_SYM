@@ -6,9 +6,16 @@ def ren():
 
 
 def decode(ins:str):
-    index_s = ins.find('```')
+    index_s = ins.find('```python')
+    index_e = ins.rfind('```')
 
-    return index_s
+    cut = ins[index_s+10:index_e]
+
+    index_s = cut.find('if __name__ == "__main__":')
+
+    cut = cut[:index_s]
+
+    return cut
 
 if __name__ == "__main__":
     ask = """
