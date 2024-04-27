@@ -8,4 +8,7 @@ python-multipart
 rich
 rq
 
-erniebot
+transformers
+accelerate
+llama-cpp-python
+openai

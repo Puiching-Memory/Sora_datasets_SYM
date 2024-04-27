@@ -1,5 +1,6 @@
 import erniebot
 import configparser
+import requests
 
 apikey = configparser.ConfigParser()
 apikey.read("apikey.cfg", encoding="utf-8")
@@ -19,6 +20,6 @@ erniebot.api_type = "aistudio"
 erniebot.access_token = apikey
 
 # Create a chat completion
-response = erniebot.ChatCompletion.create(model="ernie-4.0", messages=[{"role": "user", "content": "使用manim community,画一个圆O,一条属于O的切线A,有一个动点P在A上移动,连接PO"}])
+response = erniebot.ChatCompletion.create(model="ernie-4.0", messages=[{"role": "user", "content": "使用manim社区版本,画一个圆O,有一个动点P在O上移动,连接PO"}])
 
 print(response.result)

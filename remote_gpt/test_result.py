@@ -1,45 +1,48 @@
 from manim import *
-import os
 
-class CircleTangentPoint(Scene):
+class CircleAndPoint(Scene):
     def construct(self):
-        # 创建一个圆O
-        circle = Circle(radius=1, color=BLUE)
-        circle.move_to(ORIGIN)
-        self.add(circle)
+        # 创建一个圆 O
+        circle = Circle(color=BLUE)
+        circle.set_fill(opacity=0.5)
+        circle_label = Tex("O")
+        circle_label.move_to(circle.get_center())
 
-        # 创建一个点O表示圆心
-        dot_o = Dot(color=YELLOW)
-        dot_o.move_to(ORIGIN)
-        self.add(dot_o)
+        # 创建一个动点 P
+        dot = Dot(color=RED)
+        dot.move_to(circle.point_at_angle(0))  # 初始位置设为圆的最右侧点
+        dot_label = Tex("P")
+        dot_label.next_to(dot, DOWN)
 
-        # 创建一个切线A
-        line_a = Line(LEFT*2, UP, color=RED)
-        line_a.rotate(TAU/4, about_point=ORIGIN)  # 假设切线A与x轴呈45度角
-        self.add(line_a)
+        # 创建一个始终连接圆心和动点的线段
+        line = Line(circle.get_center(), dot.get_center(), color=YELLOW)
 
-        # 创建一个动点P在A上移动
-        dot_p = Dot(color=GREEN)
-        dot_p.move_to(line_a.get_start())
-        self.add(dot_p)
+        # 添加所有元素到场景中
+        self.add(circle, circle_label, dot, dot_label, line)
 
-        # 创建一个线段PO连接圆心和动点
-        line_po = Line(ORIGIN, dot_p.get_center(), color=PURPLE)
-        self.add(line_po)
-
-        # 让动点P在A上移动，并更新线段PO
+        # 让动点 P 在圆上移动
         self.play(
-            MoveAlongPath(dot_p, line_a),
-            UpdateFromAlphaFunc(line_po, lambda m, a: line_po.become(Line(ORIGIN, dot_p.get_center()))),
-            run_time=3
+            Rotate(dot, angle=2 * PI, about_point=circle.get_center(), rate_func=linear),
+            UpdateFromFunc(line, lambda m: m.become(Line(circle.get_center(), dot.get_center()))),
+            run_time=5
         )
 
-        # 停留一会儿
+        # 暂停动画
         self.wait()
 
-# 运行脚本
+        # 可选：让动点 P 回到初始位置
+        self.play(
+            Rotate(dot, angle=-2 * PI, about_point=circle.get_center(), rate_func=linear),
+            UpdateFromFunc(line, lambda m: m.become(Line(circle.get_center(), dot.get_center()))),
+            run_time=5
+        )
+
+        # 移除所有元素
+        # self.clear()
+
+# 运行动画
 if __name__ == "__main__":
     module_name = os.path.basename(__file__)
     command_A = "manim -p -c '#2B2B2B' --video_dir ~/Downloads/ "
-    command_B = module_name + " CircleTangentPoint -pl"
+    command_B = module_name + " CircleAndPoint -pl"
     os.system(command_A + command_B)
