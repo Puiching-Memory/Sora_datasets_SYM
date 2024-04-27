@@ -162,3 +162,4 @@ cython_debug/
 
 # 自定义
 *.GGUF
+apikey.cfg
