@@ -1,8 +1,17 @@
-输入示例
+import os
 
 
-文心一言4
+def ren():
+    pass
 
+
+def decode(ins:str):
+    index_s = ins.find('```')
+
+    return index_s
+
+if __name__ == "__main__":
+    ask = """
 使用manim社区版,绘制以下题目的图像:圆O半径r=3,点P为圆O上一动点,连接OP
 
 
@@ -62,3 +71,8 @@ if __name__ == "__main__":
 另外，请注意，我在上面的脚本中添加了一个 `if __name__ == "__main__":` 块来运行动画。这是 Python 的一种常见做法，用于指示当脚本作为主程序运行时应该执行哪些代码。这样，如果您将此脚本导入到其他脚本中，它不会自动运行动画。
 
 此外，`os.system(command_A + command_B)` 这一行可能需要根据您的操作系统和 `manim` 的安装位置进行调整。我假设您已经将 `manim` 安装在了系统的 PATH 中，并且您想要将生成的视频保存到 `~/Downloads/` 目录中。如果您的情况不同，请相应地修改这些值。
+"""
+
+    re = decode(ask)
+    
+    print(re)

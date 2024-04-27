@@ -8,6 +8,8 @@ from contextlib import asynccontextmanager
 from redis import Redis
 from rq import Queue
 
+import engine_wenxin
+
 # ----------------------------------------------------------
 # head
 # ----------------------------------------------------------
@@ -25,7 +27,7 @@ queue = Queue(connection=Redis())
 
 # 载入设置
 cfg = configparser.ConfigParser()
-cfg.read("cfg/main.cfg", encoding="utf-8")
+cfg.read("main.cfg", encoding="utf-8")
 app = FastAPI(version=cfg["main"]["version"], lifespan=lifespan)
 print("API Version:", cfg["main"]["version"])
 
@@ -35,21 +37,15 @@ class item_test(BaseModel):
     time: str
 
 
-class item_task(BaseModel):
-    images: bytes = File() #文件路径列表,上传
-    #rems_image: Union[dict, None] = None #去阴影蒙版
 
-class work_task():
-    #images: bytes = File() #文件路径列表,上传
-    #rems_image: Union[dict, None] = None #去阴影蒙版
 
+class work_task(BaseModel):
     # Not for user
-    image_path:Union[str, None] = None
-    UUID: Union[str, None] = None
-    res_path: Union[str, None] = None
+    descip:str
+    gpt:Union[str, None] = 'ernie-4.0'
+    ULID: Union[str, None] = None
+    res:Union[str, None] = None
 
-class image(BaseModel):
-    images: bytes
 
 # ----------------------------------------------------------
 # API
@@ -62,8 +58,9 @@ async def get_version():
     return {"GPT_Server": cfg["main"]["version"]}
 
 @app.post("/task")
-async def new_task():
-    return {"GPT_Server": cfg["main"]["version"]}
+async def new_task(task:work_task):
+    res = engine_wenxin.chat_wenxin4(task.descip,task.gpt)
+    return res
 
 # ----------------------------------------------------------
 # core

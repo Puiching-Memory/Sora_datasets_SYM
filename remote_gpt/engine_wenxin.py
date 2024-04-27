@@ -9,7 +9,7 @@ apikey = apikey['main']['key']
 # List supported models
 models = erniebot.Model.list()
 
-print(models)
+#print(models)
 # ernie-bot             文心一言旗舰版
 # ernie-bot-turbo       文心一言轻量版
 # ernie-text-embedding  文心百中语义模型
@@ -20,6 +20,9 @@ erniebot.api_type = "aistudio"
 erniebot.access_token = apikey
 
 # Create a chat completion
-response = erniebot.ChatCompletion.create(model="ernie-4.0", messages=[{"role": "user", "content": "使用manim社区版本,画一个圆O,有一个动点P在O上移动,连接PO"}])
+def chat_wenxin4(ask:str,model:str):
+    response = erniebot.ChatCompletion.create(model=model, messages=[{"role": "user", "content": ask}])
 
-print(response.result)
+    #print(response.result)
+    
+    return response.result

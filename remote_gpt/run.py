@@ -17,7 +17,7 @@ import subprocess
 import configparser
 
 cfg = configparser.ConfigParser()
-cfg.read("cfg/main.cfg",encoding='utf-8')
+cfg.read("main.cfg",encoding='utf-8')
 
 def main():
     uvicorn.run(

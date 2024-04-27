@@ -38,19 +38,7 @@ class item_test(BaseModel):
 class item_task(BaseModel):
     images: bytes = File() #文件路径列表,上传
     #rems_image: Union[dict, None] = None #去阴影蒙版
-
-class work_task():
-    #images: bytes = File() #文件路径列表,上传
-    #rems_image: Union[dict, None] = None #去阴影蒙版
-
-    # Not for user
-    image_path:Union[str, None] = None
-    UUID: Union[str, None] = None
-    res_path: Union[str, None] = None
-
-class image(BaseModel):
-    images: bytes
-
+    
 # ----------------------------------------------------------
 # API
 # ----------------------------------------------------------
