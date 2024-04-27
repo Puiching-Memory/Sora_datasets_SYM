@@ -163,3 +163,5 @@ cython_debug/
 # 自定义
 *.GGUF
 apikey.cfg
+*.mp4
+partial_movie_file_list.txt

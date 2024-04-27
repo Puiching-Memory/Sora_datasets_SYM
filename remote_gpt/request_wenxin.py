@@ -1,4 +1,9 @@
 import erniebot
+import configparser
+
+apikey = configparser.ConfigParser()
+apikey.read("apikey.cfg", encoding="utf-8")
+apikey = apikey['main']['key']
 
 # List supported models
 models = erniebot.Model.list()
@@ -11,9 +16,9 @@ print(models)
 
 # Set authentication params
 erniebot.api_type = "aistudio"
-erniebot.access_token = "<access-token-for-aistudio>"
+erniebot.access_token = apikey
 
 # Create a chat completion
-response = erniebot.ChatCompletion.create(model="ernie-bot", messages=[{"role": "user", "content": "你好，请介绍下你自己"}])
+response = erniebot.ChatCompletion.create(model="ernie-4.0", messages=[{"role": "user", "content": "使用manim community,画一个圆O,一条属于O的切线A,有一个动点P在A上移动,连接PO"}])
 
 print(response.result)
