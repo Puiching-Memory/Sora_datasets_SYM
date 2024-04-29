@@ -12,3 +12,4 @@ transformers
 accelerate
 llama-cpp-python
 openai
+safetensors
