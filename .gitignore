@@ -167,4 +167,5 @@ apikey.cfg
 partial_movie_file_list.txt
 *.tex
 *.svg
-.cache/
+cache/
+pth/

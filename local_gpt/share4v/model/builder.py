@@ -118,6 +118,7 @@ def load_pretrained_model(model_path, model_base, model_name, load_8bit=False, l
 
     image_processor = None
 
+    print(model_name.lower())
     if 'sharegpt4v' in model_name.lower():
         mm_use_im_start_end = getattr(
             model.config, "mm_use_im_start_end", False)
