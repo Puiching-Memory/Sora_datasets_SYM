@@ -20,13 +20,25 @@ Open_Sora模型数据集计划
 
 文件目录：root/360/
 
-### GPT驱动任务服务端
+### 全景视频驱动程序
+
+文件目录：root/vr
+
+### GPT本地服务端
 
 文件目录：root/local_gpt
+
+### GPT远程服务端
+
+文件目录：root/remote_gpt
 
 ### 视频爬虫
 
 文件目录：root/scipyer
+
+### 数据仓库
+
+文件目录：root/stash
 
 # 下载数据集
 
@@ -46,11 +58,11 @@ Open_Sora模型数据集计划
 | Runway    |      |           |           |           |
 | Pika Lab  |      |           |           |           |
 
-# 环境
+# 本地部署方案
 
 Python3.11
 
-`pip install -r requirements.txt`
+run_all.py
 
 # 声明
 
