@@ -8,6 +8,8 @@ from contextlib import asynccontextmanager
 from redis import Redis
 from rq import Queue
 
+import engine_manim
+
 # ----------------------------------------------------------
 # head
 # ----------------------------------------------------------
@@ -36,8 +38,7 @@ class item_test(BaseModel):
 
 
 class item_task(BaseModel):
-    images: bytes = File() #文件路径列表,上传
-    #rems_image: Union[dict, None] = None #去阴影蒙版
+    task:str
     
 # ----------------------------------------------------------
 # API
@@ -47,10 +48,10 @@ class item_task(BaseModel):
 # 版本号
 @app.get("/")
 async def get_version():
-    return {"GPT_Server": cfg["main"]["version"]}
+    return {"manim_Server": cfg["main"]["version"]}
 
 @app.post("/task")
-async def new_task():
+async def new_task(task:item_task):
     return {"GPT_Server": cfg["main"]["version"]}
 
 # ----------------------------------------------------------

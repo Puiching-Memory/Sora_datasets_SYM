@@ -1,9 +1,19 @@
 import os
+import ulid
+import time
 
+def save_file(task:str):
+    task_id = ulid.ULID.from_timestamp(time.time())
+    os.mkdir('./cache/'+task_id)
+    cache_dir = './cache/'+task_id
 
-def ren():
-    pass
+    with open(cache_dir+'/task.py') as file:
+        file.write(task)
 
+def ren(path:str):
+    command = ()
+    print(command)
+    os.system(command=command)
 
 def decode(ins:str):
     index_s = ins.find('```python')
