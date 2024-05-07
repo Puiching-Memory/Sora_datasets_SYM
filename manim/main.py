@@ -27,7 +27,7 @@ queue = Queue(connection=Redis())
 
 # 载入设置
 cfg = configparser.ConfigParser()
-cfg.read("cfg/main.cfg", encoding="utf-8")
+cfg.read("main.cfg", encoding="utf-8")
 app = FastAPI(version=cfg["main"]["version"], lifespan=lifespan)
 print("API Version:", cfg["main"]["version"])
 
@@ -52,7 +52,10 @@ async def get_version():
 
 @app.post("/task")
 async def new_task(task:item_task):
-    return {"GPT_Server": cfg["main"]["version"]}
+    cut,clsa = engine_manim.decode(task.task)
+    file_path = engine_manim.save_file(cut)
+    re = engine_manim.ren(file_path,clsa)
+    return {"path": file_path,"clsa":clsa}
 
 # ----------------------------------------------------------
 # core

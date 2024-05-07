@@ -62,6 +62,13 @@ async def new_task(task:work_task):
     res = engine_wenxin.chat_wenxin4(task.descip,task.gpt)
     return res
 
+@app.post("/task_sim")
+async def new_task(task:work_task):
+    task.descip = f"使用manim的community版本,绘制以下题目的图像,不要提供除代码以外的任何文字:{task.descip}"
+    print(task.descip)
+    res = engine_wenxin.chat_wenxin4(task.descip,task.gpt)
+    return res
+
 # ----------------------------------------------------------
 # core
 # ----------------------------------------------------------

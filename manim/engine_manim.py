@@ -2,30 +2,42 @@ import os
 import ulid
 import time
 
-def save_file(task:str):
-    task_id = ulid.ULID.from_timestamp(time.time())
-    os.mkdir('./cache/'+task_id)
-    cache_dir = './cache/'+task_id
 
-    with open(cache_dir+'/task.py') as file:
+def save_file(task: str):
+    task_id = ulid.ULID.from_timestamp(time.time())
+    os.mkdir("./cache/" + str(task_id))
+    cache_dir = "./cache/" + str(task_id)
+
+    with open(cache_dir + "/task.py",'w',encoding='utf-8') as file:
         file.write(task)
 
-def ren(path:str):
-    command = ()
+    return cache_dir + "/task.py"
+
+
+def ren(path: str,clsa:str):
+    command = "manim" + " -pqh" + f" {path} {clsa}"
     print(command)
     os.system(command=command)
 
-def decode(ins:str):
-    index_s = ins.find('```python')
-    index_e = ins.rfind('```')
 
-    cut = ins[index_s+10:index_e]
+def decode(ins: str):
+    #寻找python代码
+    index_s = ins.find("```python")
+    index_e = ins.rfind("```")
 
+    cut = ins[index_s + 10 : index_e]
+
+    #移除if main代码
     index_s = cut.find('if __name__ == "__main__":')
 
     cut = cut[:index_s]
 
-    return cut
+    #寻找class名称
+    clsa = cut[cut.find('class') + 6:]
+    clsa = clsa[:clsa.find('(')]
+
+    return cut,clsa
+
 
 if __name__ == "__main__":
     ask = """
@@ -90,6 +102,6 @@ if __name__ == "__main__":
 此外，`os.system(command_A + command_B)` 这一行可能需要根据您的操作系统和 `manim` 的安装位置进行调整。我假设您已经将 `manim` 安装在了系统的 PATH 中，并且您想要将生成的视频保存到 `~/Downloads/` 目录中。如果您的情况不同，请相应地修改这些值。
 """
 
-    re = decode(ask)
-    
-    print(re)
+    re,re2 = decode(ask)
+
+    print(re,re2)

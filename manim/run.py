@@ -36,5 +36,5 @@ def rq_run_worker():
     return process
 
 if __name__ == "__main__":
-    rq_run_worker()
+    #rq_run_worker()
     main()
