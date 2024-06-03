@@ -4,45 +4,18 @@ Open_Sora模型数据集计划
 
 # 项目结构
 
-### 数据管理中心（软件）
-
-文件目录：root/manager
-
-### 数学几何场景
-
-文件目录：root/manim/
-
-### 3D渲染场景
-
-文件目录：root/blender/
-
-### 全景视频场景
-
-文件目录：root/360/
-
-### 全景视频驱动程序
-
-文件目录：root/vr
-
-### GPT本地服务端
-
-文件目录：root/local_gpt
-
-### GPT远程服务端
-
-文件目录：root/remote_gpt
-
-### 视频爬虫
-
-文件目录：root/scipyer
-
-### 数据仓库
-
-文件目录：root/stash
-
-### 数据评分
-
-文件目录：root/score
+| 项目                 | 文件路径        | 备注 |
+| -------------------- | --------------- | ---- |
+| 数据管理中心（软件） | root/manager    |      |
+| 数学几何场景         | root/manim/     |      |
+| 3D渲染场景           | root/blender/   |      |
+| 全景视频场景         | root/360/       |      |
+| 全景视频驱动程序     | root/vr         |      |
+| GPT本地服务端        | root/local_gpt  |      |
+| GPT远程服务端        | root/remote_gpt |      |
+| 视频爬虫             | root/scipyer    |      |
+| 数据仓库管理器       | root/stash      |      |
+| 数据评分             | root/score      |      |
 
 # 下载数据集
 
