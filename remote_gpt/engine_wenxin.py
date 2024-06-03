@@ -26,3 +26,8 @@ def chat_wenxin4(ask:str,model:str):
     #print(response.result)
     
     return response.result
+
+def chat_manim2(ask:str):
+    response = erniebot.ChatCompletion.create(messages=[{"role": "user", "content": ask,"system":'你是为帮助用户使用manim社区版本制作动画的助手。不要使用Python代码以外的任何内容进行响应。'}])
+    return response.result
+

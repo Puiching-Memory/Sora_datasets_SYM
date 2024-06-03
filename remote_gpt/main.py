@@ -9,6 +9,7 @@ from redis import Redis
 from rq import Queue
 
 import engine_wenxin
+import engine_qianfan
 
 # ----------------------------------------------------------
 # head
@@ -59,14 +60,14 @@ async def get_version():
 
 @app.post("/task")
 async def new_task(task:work_task):
-    res = engine_wenxin.chat_wenxin4(task.descip,task.gpt)
+    res = engine_qianfan.chat_mainm(task.descip)
     return res
 
 @app.post("/task_sim")
 async def new_task(task:work_task):
-    task.descip = f"使用manim的community版本,绘制以下题目的图像,不要提供除代码以外的任何文字:{task.descip}"
+    #task.descip = f"使用manim的community版本,绘制以下题目的图像,不要提供除代码以外的任何文字:{task.descip}"
     print(task.descip)
-    res = engine_wenxin.chat_wenxin4(task.descip,task.gpt)
+    res = engine_wenxin.chat_manim2(task.descip)
     return res
 
 # ----------------------------------------------------------

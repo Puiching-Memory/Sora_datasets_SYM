@@ -12,7 +12,7 @@ tokenizer, model, image_processor, context_len = load_pretrained_model(
 )
 """
 prompt = "Describe the whole picture"
-image_file = r"./fe9f31c57fe7c5bd7d3cc27434cd4bba.jpg"
+image_file = r"./2c33-551b95416dca86f905f3e5f3ce21935d.jpg"
 
 args = type('Args', (), {
     "model_path": model_path,

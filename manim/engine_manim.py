@@ -1,4 +1,5 @@
 import os
+import subprocess
 import ulid
 import time
 
@@ -17,7 +18,10 @@ def save_file(task: str):
 def ren(path: str,clsa:str):
     command = "manim" + " -pqh" + f" {path} {clsa}"
     print(command)
-    os.system(command=command)
+    result = subprocess.run(["manim", "-pqh",path,clsa], capture_output=True, text=True,encoding='gbk')
+    print(result.stdout,result.returncode,result.stderr)
+
+    return result
 
 
 def decode(ins: str):

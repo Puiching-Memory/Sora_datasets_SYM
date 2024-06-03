@@ -1,6 +1,6 @@
 from typing import Union, Annotated, Optional
 import uvicorn
-from fastapi import FastAPI, HTTPException,File,UploadFile
+from fastapi import FastAPI, HTTPException, File, UploadFile
 from pydantic import BaseModel
 import configparser
 import ulid
@@ -22,6 +22,7 @@ async def lifespan(app: FastAPI):
     yield
     # 关闭前执行
 
+
 # 载入队列
 queue = Queue(connection=Redis())
 
@@ -38,8 +39,9 @@ class item_test(BaseModel):
 
 
 class item_task(BaseModel):
-    task:str
-    
+    task: str
+
+
 # ----------------------------------------------------------
 # API
 # ----------------------------------------------------------
@@ -50,12 +52,17 @@ class item_task(BaseModel):
 async def get_version():
     return {"manim_Server": cfg["main"]["version"]}
 
+
 @app.post("/task")
-async def new_task(task:item_task):
-    cut,clsa = engine_manim.decode(task.task)
+async def new_task(task: item_task):
+    cut, clsa = engine_manim.decode(task.task)
     file_path = engine_manim.save_file(cut)
-    re = engine_manim.ren(file_path,clsa)
-    return {"path": file_path,"clsa":clsa}
+    result = engine_manim.ren(file_path, clsa)
+    if result.returncode == 1:
+        return {"rencode": 1, "error": result.stderr}
+    else:
+        return {"rencode": 0, "path": file_path, "clsa": clsa}
+
 
 # ----------------------------------------------------------
 # core
