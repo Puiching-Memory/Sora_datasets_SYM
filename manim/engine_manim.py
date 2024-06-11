@@ -18,7 +18,7 @@ def save_file(task: str):
 def ren(path: str,clsa:str):
     command = "manim" + " -pqh" + f" {path} {clsa}"
     print(command)
-    result = subprocess.run(["manim", "-pqh",path,clsa], capture_output=True, text=True,encoding='gbk')
+    result = subprocess.run(["manim", "-pqh",path,clsa], capture_output=True, text=True,encoding='utf8')
     print(result.stdout,result.returncode,result.stderr)
 
     return result

@@ -9,6 +9,7 @@ from contextlib import asynccontextmanager
 from redis import Redis
 from rq import Queue
 ###
+#C:/Users/1138/.conda/envs/sym/python.exe d:/GitHub/Sora_datasets_SYM/remote_gpt/run.py
 
 import uvicorn
 import subprocess

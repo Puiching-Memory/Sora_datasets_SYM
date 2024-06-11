@@ -11,8 +11,8 @@ tokenizer, model, image_processor, context_len = load_pretrained_model(
     model_name=get_model_name_from_path(model_path)
 )
 """
-prompt = "Describe the whole picture"
-image_file = r"./2c33-551b95416dca86f905f3e5f3ce21935d.jpg"
+prompt = "To describe the entire image, use fewer than 77 words"
+image_file = r"./example.jpg"
 
 args = type('Args', (), {
     "model_path": model_path,
@@ -25,7 +25,7 @@ args = type('Args', (), {
     "temperature": 0,
     "top_p": None,
     "num_beams": 1,
-    "max_new_tokens": 512,
+    "max_new_tokens": 256,
     "offload_folder":"./cache"
 })()
 

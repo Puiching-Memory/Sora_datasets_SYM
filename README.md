@@ -37,7 +37,13 @@ Open_Sora模型数据集计划
 
 # 本地部署方案
 
-Python3.11
+### Anaconda
+
+1. `conda create -n sym python=3.11`
+2. `conda activate sym`
+3. `pip install -r requirements.txt`
+4. 安装ffmpeg
+5. 安装latex
 
 ~~run_all.py~~
 
